@@ -1,7 +1,7 @@
 CC	:= gcc
 CFLAGS	:= -W -Wall -g
 
-TARGETS  := ardread readsend writevals
+TARGETS  := readsend
 SRCFILES := $(wildcard *.c)
 OBJFILES := $(patsubst %.c,%.o,$(SRCFILES))
 
@@ -12,7 +12,7 @@ CONV_IMGS := rainbow
 all: $(TARGETS) $(CONV_IMGS)
 
 $(TARGETS):
-	$(CC) $@.c $(CFLAGS)
+	$(CC) -o $@ $@.c $(CFLAGS)
 
 $(CONV_IMGS):
 	input=$@.jpg runipy coordinates.ipynb
