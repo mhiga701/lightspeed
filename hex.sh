@@ -1,7 +1,18 @@
 #!/bin/bash
 
-FILENAME="polar_image_data.txt"
-OUTPUT_FILE="hex_colors.txt"
+#set -x
+
+OUT="hex_colors.txt"
+
+if [ "$#" -lt 1 ]; then
+    echo "Usage: $0 <input_file> [<output_file>]"
+    echo "    Input file should be of the form: "
+    echo "    Position (r, theta): (#, #), Color: #XXXXXX"
+    exit 1
+fi
+
+FILENAME=$1
+OUTPUT_FILE=${2:-${OUT}}
 
 echo "Starting script..."
 if [ -f "$FILENAME" ]; then
